@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 import environ
+from pathlib import Path
 
 env = environ.Env(
     DEBUG=(bool, True)
 )
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(BASE_DIR / ".env")
 from pathlib import Path
@@ -33,6 +35,7 @@ DEBUG = env("DEBUG")
 
 INSTALLED_APPS = [
     'accounts',
+    'posts',
     'rest_framework',
     'rest_framework_simplejwt',
     'django.contrib.admin',
@@ -41,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
 ]
 
 MIDDLEWARE = [
